@@ -20,7 +20,7 @@ public class GatewayApplication {
                         .filters(f->f.rewritePath("/api/service/(?<remains>.*)","/${remains}")
                                 .preserveHostHeader()
                         )
-                        .uri("lb://service-message")
+                        .uri("lb://service-operations")
                 )
                 .route(r -> r.path("/api/auth/**")
                         .filters(f -> f.rewritePath("/api/auth/(?<remains>.*)", "/${remains}")                                )

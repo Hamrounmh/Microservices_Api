@@ -11,7 +11,7 @@ Authorization: {{auth_token}}
 Content-Type: application/json
 Accept: application/json
 
-{"id_transaction" : 2,
+{"id_transaction" : 1,
   "monnaieSource": "USD",
   "monnaieDestination" : "EUR",
   "taux": "1.2",

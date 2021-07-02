@@ -6,7 +6,7 @@ services:
       - 8500:8500
 
   service-operations:
-    image: demo-microservices/service-operations
+    image: projet-microservices/service-operations
     restart: always
     environment:
       - JAVA_TOOL_OPTIONS=
@@ -16,7 +16,7 @@ services:
       - service-auth
 
   service-auth:
-    image: demo-microservices/service-auth
+    image: projet-microservices/service-auth
     environment:
       - JAVA_TOOL_OPTIONS=
         -DCONSUL_HOST=discovery
@@ -24,9 +24,9 @@ services:
       - discovery
 
   gateway:
-    image: demo-microservices/gateway
+    image: projet-microservices/gateway
     ports:
-      - 8080:8080
+      - 8081:8081
     environment:
       - JAVA_TOOL_OPTIONS=
         -DCONSUL_HOST=discovery

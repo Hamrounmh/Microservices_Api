@@ -10,6 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -46,8 +47,12 @@ public class OperationsController {
 
 
     @GetMapping(value = "/operations/{id}")
-    public ResponseEntity<Operation> getbyId(@PathVariable int  id) {
-        return ResponseEntity.ok(repository.getOne((long)id));
+    public ResponseEntity getbyId(@PathVariable int  id) {
+        Optional<Operation> op = repository.findById((long)id);
+        if (op.isPresent())
+            return ResponseEntity.ok(op.get());
+        else
+            return (ResponseEntity) ResponseEntity.status(-1);
     }
 
     @DeleteMapping(value = "/operations/{id}")
