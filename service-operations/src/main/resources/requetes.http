@@ -1,0 +1,26 @@
+### get AUTH token before API call
+POST http://localhost:8088/login
+Content-Type: application/json
+
+{"username": "user", "password": "user"}
+
+> {% client.global.set("auth_token", response.headers.valueOf("Authorization")); %}
+###
+PUT http://localhost:8085/operations
+Authorization: {{auth_token}}
+Content-Type: application/json
+Accept: application/json
+
+{"id_transaction" : 2,
+  "monnaieSource": "USD",
+  "monnaieDestination" : "EUR",
+  "taux": "1.2",
+  "montant" : "6.00"
+}
+###
+
+###
+GET http://localhost:8085/operations/0
+
+###
+GET http://localhost:8085/operations
