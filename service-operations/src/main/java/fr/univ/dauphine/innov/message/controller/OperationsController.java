@@ -56,10 +56,10 @@ public class OperationsController {
     }
 
     @DeleteMapping(value = "/operations/{id}")
-    public ResponseEntity<Operation> delete(@PathVariable int  id) {
+    public ResponseEntity<Integer> delete(@PathVariable int  id) {
         Operation op = repository.getOne((long)id);
         repository.delete(op);
-        return ResponseEntity.ok(op);
+        return ResponseEntity.ok(1);
     }
 
     @GetMapping(value = "/operations")

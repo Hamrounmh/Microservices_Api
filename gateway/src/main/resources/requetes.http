@@ -4,20 +4,53 @@ Content-Type: application/json
 {"username": "user", "password": "user"}
 
 > {% client.global.set("auth_token", response.headers.valueOf("Authorization")); %}
+
 ###
-POST http://localhost:8081/api/service/messages
-Content-Type: application/json
+POST http://localhost:8081/api/service/operations
 Authorization: {{auth_token}}
+Content-Type: application/json
+Accept: application/json
 
-{"texte": "depuis la passerelle !", "utilisateur": "fred"}
+{
+  "monnaieSource": "USD",
+  "monnaieDestination" : "EUR",
+  "taux": "1.2",
+  "montant" : "1600"
+}
+###
+POST http://localhost:8081/api/service/operations
+Authorization: {{auth_token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "monnaieSource": "DZA",
+  "monnaieDestination" : "EUR",
+  "taux": "0.4",
+  "montant" : "1000"
+}
+###
+
+GET http://localhost:8081/api/service/operations
 
 ###
-GET http://localhost:8081/api/service/messages/1
+PUT http://localhost:8081/api/service/operations
+Authorization: {{auth_token}}
+Content-Type: application/json
+Accept: application/json
+
+{"id_transaction" : 1,
+  "monnaieSource": "USD",
+  "monnaieDestination" : "EUR",
+  "taux": "1.2",
+  "montant" : "200"
+}
 
 ###
-GET http://localhost:8081/api/service/messages/subscribe
+GET http://localhost:8081/api/service/operations/1
 
 ###
-POST http://localhost:8081/api/auth/login?login=fred&password=fred
+DELETE http://localhost:8081/api/service/operations/1
 
 ###
+GET http://localhost:8081/api/service/operations
