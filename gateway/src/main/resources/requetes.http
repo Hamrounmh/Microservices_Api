@@ -24,6 +24,30 @@ Content-Type: application/json
 Accept: application/json
 
 {
+  "monnaieSource": "USD",
+  "monnaieDestination" : "EUR",
+  "taux": "1.2",
+  "montant" : "7900"
+}
+###
+POST http://localhost:8081/api/service/operations
+Authorization: {{auth_token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "monnaieSource": "USD",
+  "monnaieDestination" : "EUR",
+  "taux": "1.2",
+  "montant" : "8900"
+}
+###
+POST http://localhost:8081/api/service/operations
+Authorization: {{auth_token}}
+Content-Type: application/json
+Accept: application/json
+
+{
   "monnaieSource": "DZA",
   "monnaieDestination" : "EUR",
   "taux": "0.4",
