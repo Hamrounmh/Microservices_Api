@@ -45,6 +45,8 @@ Accept: application/json
   "taux": "1.2",
   "montant" : "200"
 }
+###
+GET http://localhost:8081/api/service/operationsHistory?dest=EUR&source=USD
 
 ###
 GET http://localhost:8081/api/service/operations/1

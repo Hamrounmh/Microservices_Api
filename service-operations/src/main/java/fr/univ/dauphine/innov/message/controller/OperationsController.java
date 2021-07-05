@@ -11,6 +11,7 @@ import java.net.URI;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -32,9 +33,6 @@ public class OperationsController {
         operationBody.setId_transaction(id);
         repository.save(op);
         URI location = base.path("/api/operations/{id}").buildAndExpand(id).toUri();
-
-
-        Operation tx = repository.getOne(1L);
         return ResponseEntity.created(location).body(operationBody);
     }
     @PutMapping(value = "/operations")
@@ -66,5 +64,12 @@ public class OperationsController {
     public ResponseEntity<List<Operation>> getall() {
 
         return ResponseEntity.ok(repository.findAll());
+    }
+
+    @GetMapping(value = "/operationsHistory")
+    public ResponseEntity<List<Operation>> getHistory(@RequestParam  String dest,@RequestParam String source) {
+        List<Operation> operations = repository.findAll();
+        operations.stream().filter(x -> x.getMonnaieSource().equals(source) && x.getMonnaieDestination().equals(dest)).collect(Collectors.toList());
+        return ResponseEntity.ok(operations);
     }
 }

@@ -20,7 +20,7 @@ Accept: application/json
 ###
 
 ###
-GET http://localhost:8085/operations/1
+GET http://localhost:8085/operationsHistory?dest=EUR&source=USD
 
 ###
 GET http://localhost:8085/operations

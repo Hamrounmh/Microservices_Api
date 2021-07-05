@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .authorizeExchange()
                 .pathMatchers(HttpMethod.GET,"/operations/*").permitAll()
                 .pathMatchers(HttpMethod.GET,"/operations").permitAll()
+                .pathMatchers(HttpMethod.GET,"/operationsHistory").permitAll()
                 .pathMatchers(HttpMethod.DELETE,"/operations/*").permitAll()
                 .pathMatchers(HttpMethod.PUT,"/operations").permitAll()
                 // allow health check for consul !
