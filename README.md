@@ -1,4 +1,47 @@
-# microservices
+# Microservices :
+Ce projet consiste a implémenter 3 micros services. 
+### 1- geteway :
+Ce micro-service est responsable du routage des micro-service sur notre api. Les éléments qui interviennent dans ce service sont dans la figure ci-dessous.
+
+### 2- Service-auth :
+Ce micro-service est responsable de l’authentification afin d’utiliser le service opérations. Dans la configuration il contient les méthode de génération des clé pour ensuite générer un token d’authentification. Il a comme model un utilisateur seulement.
+Les classes de ce service sont affichées dans la figure ci-dessous.
+
+
+
+### 3 -service-opérations :
+
+Ce micro-service est responsable des opération C.R.U.D sur des opérations de change. De plus, nous avons implémenter dans la configuration Springs Security afin de gérer les droits et les rôles sur les méthode de ce service.
+Ces droit et rôles sont définis dans le service auth ou les utilisateurs sont créé. Les opérations sont enregistrées dans une base de données H2.
+Les méthode du contrôleur sont :
+    • GetOpérationById : qui renvoie un Json contenant les données de l’opération
+    • getAllOperations : qui renvoi un Json représentant toute les opération enregistrée dans la base de données H2
+    • deleteOperation() : la méthode responsable de la suppression des opération
+    • UpdateOperation : la méthode responsable de mettre ajour une opération .
+    • Create() la méthode responsable de crée une opération a partir d’un fichier Json
+donnée en entrée.
+Dans la figure ci-dessous, le schéma représente les class intervenant dans le service de gestion des opération.
+
+
+
+## Le client pour les tests :
+Nous avons utilisé pour les tests un client http fournis par Intellij.
+### A. L’authentification :
+Cette image représente les requêtes que nous avons testé en local afin de gérer les authentification et les générations des clés.
+
+
+
+## Les Opérations :
+Dans cette image nous indiquons quelques requêtes que nous avons tester sur notre micro- service en local afin de tester les méthodes CRUD
+
+## Docker :
+Pour lancer les contenaires docker : 
+- lancer le script du docker consul 
+- packager les microservices dans Maven avec "mvn pckage"
+- Docker Run.
+
+## Exemple d'utilisation en local : 
+
 ## pour se connecter a l'api et générer le token 
 POST http://localhost:8088/login
 Content-Type: application/json
